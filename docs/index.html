@@ -18,6 +18,7 @@ body{background-image:radial-gradient(ellipse at 12% 1%,#4826608c,transparent 48
 @media(prefers-reduced-motion:reduce){#pointer,.piece,.bombcore i,.seat.live .avatar{animation:none!important;transition:none!important}}
 #skillSet{margin:.6rem 0;border:0;padding:0}#skillSet label{display:flex;align-items:center;gap:.5em;font-size:.85rem}#skillSet input{width:auto}
 .targetField,.circlePad{width:min(100%,320px);height:150px;position:relative;background:#222942;border-radius:14px;touch-action:none}.targetField button{position:absolute;border-radius:50%;width:40px;height:40px;padding:0;background:#ec7a49;color:white}.memoryGrid{display:grid;grid-template-columns:repeat(3,44px);gap:4px}.memoryGrid button{height:40px}
+#profileForm fieldset{border:0;padding:0;margin:0;display:grid;gap:15px}#badgePreview{display:block;padding:18px;border-radius:12px;text-align:center;color:white;font-size:1.3rem;font-weight:800;overflow-wrap:anywhere}#profileForm label{display:grid;gap:5px}#profileForm select{font:inherit;width:100%;padding:8px;border-radius:6px}#profileForm input{box-sizing:border-box;width:100%}.badgeOptions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 </style><style id="local-style">*{box-sizing:border-box}body{margin:0;color:#2a213c;background-color:#faf7ef;background-image:radial-gradient(#d7d0c6 1px,transparent 1px);background-size:18px 18px;font:600 16px/1.45 'Trebuchet MS',system-ui,sans-serif}header{background:#fffaf3;border-bottom:3px solid #30253c;padding:15px max(5vw,calc((100vw - 1080px)/2));display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{display:flex;align-items:center;gap:10px;font-weight:1000;letter-spacing:-1px}.bombIcon{background:#30253c;color:#ffda64;border-radius:50%;font-size:24px;width:38px;text-align:center}button,select,input{font:inherit;color:inherit}button,select{cursor:pointer}button,select,input{border:2px solid #30253c;border-radius:10px;background:#fffdf7;padding:9px 14px}button:hover{background:#fff1d0}button:active{transform:translateY(2px)}main{max-width:1120px;padding:32px 20px;margin:auto}.hero,.setup,#arena,dialog{border:3px solid #30253c;border-radius:24px;box-shadow:0 6px #30253c;overflow:hidden}.hero{background-color:#cab9fc;background-image:radial-gradient(#a48bd1 1px,transparent 1px);background-size:9px 9px;display:flex;align-items:center;min-height:335px;position:relative}.title{padding:30px 0 30px 5%;width:44%;z-index:1}.title p{font-weight:800;margin:18px 0 0}.hero img{width:58%;margin-left:-2%}h1{font:1000 clamp(55px,7.8vw,105px)/.83 system-ui;letter-spacing:-.08em;transform:rotate(-4deg);margin:0;color:#fffaf0;-webkit-text-stroke:2px #30253c;paint-order:stroke fill;text-shadow:2px 5px #30253c}h1 em,h1 i{color:#ffde57;font-style:normal}.setup{margin-top:26px;background:#fffaf0;padding:24px 28px;display:grid;grid-template-columns:1.2fr 1.2fr 1fr;gap:16px}.setup>div{grid-column:1/-1}h2{font-size:30px;letter-spacing:-1.4px;line-height:1.2;margin:0}p{margin:5px 0}.setup label{font-size:14px;font-weight:800}.setup select{display:block;width:100%;margin-top:4px;background:#fff}.play{background:#ffce54;font-weight:900;box-shadow:0 3px #30253c;padding:12px 24px}.setup .play{grid-column:1/-1}.play:hover{background:#ffda76}footer{text-align:center;font-size:11px;letter-spacing:.13em;margin:25px}footer strong{margin-left:10px}#arena{background:#fffaf0;padding:22px}.gameHead,#roster{display:flex;align-items:center;justify-content:space-between}.gameHead b{text-transform:uppercase;letter-spacing:.14em}#roster{justify-content:center;flex-wrap:wrap;gap:10px;margin:20px}.chip{border:2px solid #30253c;border-radius:16px;padding:6px 12px;background:#ebe5f4}.active{background:#caefd8}#stage{text-align:center;padding:25px 14px;border:2px solid #30253c;border-radius:18px;background:#dfd2ff}#instruction{font-weight:900;letter-spacing:.14em;text-transform:uppercase}#prompt{font-size:clamp(32px,8vw,75px);font-weight:1000;line-height:1.35;overflow-wrap:anywhere}#clock{margin:8px auto 0;height:12px;border:2px solid #30253c;border-radius:10px;overflow:hidden;max-width:380px;background:#fff}#clock div{height:100%;background:#f29247;transform-origin:left}#seconds{font-size:13px;margin:4px}form{display:flex;justify-content:center;gap:5px;margin:16px auto 4px}form input{min-width:0;width:275px}form button{background:#ffda62}#feedback{min-height:26px}#log{text-align:center;font-size:14px;padding:14px}#grid{display:grid;grid-template-columns:repeat(4,42px);gap:4px;justify-content:center}#grid b{background:white;border:2px solid;border-radius:7px;padding:5px}dialog{max-width:min(490px,94vw);padding:25px;background:#fffaf0}dialog p{margin:16px 0}dialog::backdrop{background:#28203a88}[hidden]{display:none!important}@media(max-width:620px){header{padding:12px}.brand{font-size:14px}.bombIcon{display:none}header button{padding:7px;font-size:13px}main{padding:16px 12px}.hero{min-height:205px}.title p{font-size:13px}.setup{padding:18px;grid-template-columns:1fr 1fr}.setup label:first-of-type{grid-column:1/-1}#arena{padding:10px}}
 </style></head><body><template id="lobby-view"><header><button id="menu" aria-label="Menu">☰</button><strong class="brand"><span>🎃</span>LETTER<br>BOMB</strong><nav><button data-tab="Rooms" class="on">Rooms</button><button data-tab="Ranked">Ranked</button><button data-tab="Shop">Shop</button><button data-tab="Inventory">Inventory</button><button data-tab="Words">Words</button><button data-tab="Syllables">Syllables</button></nav><button id="sound" aria-label="Mute game sounds" title="Mute game sounds">♫</button><b class="wallet">🪙 <span id="coins">0</span></b><button id="profile">Guest</button><span class="flag" title="English">🇺🇸</span></header>
 <main><section id="lobby"><div class="lobbyBanner"><div class="bannerTitle"><h1>Letter <em>Bomb</em></h1></div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgMzAwIiBmaWxsPSJub25lIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRocmVlIGNvbG9yZnVsIGJlYW4gcGxheWVycyBzY3JhbWJsZSBhcm91bmQgYSB0aWNraW5nIGJvbWIiPgo8ZGVmcz4KICA8cGF0dGVybiBpZD0ibGItaGFsZnRvbmUiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGNpcmNsZSBjeD0iMyIgY3k9IjMiIHI9IjEuNSIgZmlsbD0iIzgyNzNhZCIgb3BhY2l0eT0iLjM3Ii8+PC9wYXR0ZXJuPgogIDxsaW5lYXJHcmFkaWVudCBpZD0ibGItc2hlbGwiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCI+PHN0b3Agc3RvcC1jb2xvcj0iIzU5NjA3OCIvPjxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IiMzMjMxNDgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxYzFhMzAiLz48L2xpbmVhckdyYWRpZW50PgogIDxnIGlkPSJsYi1zcGFyayI+PHBhdGggZD0iTTAgLTEyIDMgLTMgMTIgMCAzIDMgMCAxMiAtMyAzIC0xMiAwIC0zIC0zWiIgZmlsbD0iI2ZmZjZhYyIgc3Ryb2tlPSIjNDYzMzRjIiBzdHJva2Utd2lkdGg9IjIuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvZz4KPC9kZWZzPgo8cGF0aCBkPSJNMTcgMjA4UTgwIDc5IDIwOCA1NFQ0MTcgNTZRNTE2IDY1IDYwMSAxNDlRNjM4IDE5OSA1NjggMjQyUTQ1OSAyOTYgMjQ3IDI4M1QzMCAyNTBROSAyNDEgMTcgMjA4WiIgZmlsbD0iI2Q0YzNmNCIvPgo8cGF0aCBkPSJNMTcgMjA4UTgwIDc5IDIwOCA1NFQ0MTcgNTZRNTE2IDY1IDYwMSAxNDlRNjM4IDE5OSA1NjggMjQyUTQ1OSAyOTYgMjQ3IDI4M1QzMCAyNTBROSAyNDEgMTcgMjA4WiIgZmlsbD0idXJsKCNsYi1oYWxmdG9uZSkiLz4KPHBhdGggZD0ibTE4NSAyMjUgOTEtNTUtODEtMzEgOTUgNy01NS03MCA3NyA1NC01LTgyIDI3IDg0IDQzLTkwLTE5IDEwMyA3Mi01My01OSA3NCA4MyA3LTk0IDE3IDU1IDQ5LTg1LTI5LTEzIDU0LTE4LTU3LTYyIDM5IDQwLTQ4WiIgZmlsbD0iI2Y2ZTY4ZiIgb3BhY2l0eT0iLjk1Ii8+CjxnIGZpbGw9IiM4MjcwOWQiIG9wYWNpdHk9Ii4zNSI+PGVsbGlwc2UgY3g9IjE0MiIgY3k9IjI1MCIgcng9IjYwIiByeT0iOCIvPjxlbGxpcHNlIGN4PSIzNDAiIGN5PSIyNjMiIHJ4PSI3NSIgcnk9IjkiLz48ZWxsaXBzZSBjeD0iNDk5IiBjeT0iMjUyIiByeD0iNTMiIHJ5PSI3Ii8+PGVsbGlwc2UgY3g9IjI0NCIgY3k9IjI0NCIgcng9IjM3IiByeT0iNiIvPjwvZz4KPGcgc3Ryb2tlPSIjMzMyYTQ0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgo8IS0tIGxpbGFjIGJlYW4gcGVla2luZyBhcm91bmQgdGhlIGJvbWIgLS0+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI0NiAxODApIHJvdGF0ZSgtMTIpIj4KPHBhdGggZD0ibS0xNiAzOC04IDEycS01IDEwIDUgMTFoMTFxOS0yIDQtMTBsNS0xMW0xNS00IDggMTRxNiA3IDAgOWgtMTJxLTUtMy05LTE3IiBmaWxsPSIjOWI3MmNiIiBzdHJva2Utd2lkdGg9IjQiLz4KPHBhdGggZD0iTS0yOCAzMlEtNDEgOC0yOS0xN3E4LTE1IDIwLTIzIDI0LTEyIDM4IDQgMTQgMTYgMSAzMi04IDEwLTggMjUgMiAxNy0xMyAyMS0yMiA2LTM3LTEwWiIgZmlsbD0iI2JiOTlmMiIgc3Ryb2tlLXdpZHRoPSI0LjUiLz4KPHBhdGggZD0iTS0yOCAxN3E3IDI5IDQwIDE5LTMwIDIwLTQwLTlaIiBmaWxsPSIjOTY2ZWM2IiBzdHJva2U9Im5vbmUiLz4KPHBhdGggZD0iTS0yMS0xOXE5LTEyIDE5LTE0IiBzdHJva2U9IiNlNWQ0ZmYiIHN0cm9rZS13aWR0aD0iNiIvPgo8cGF0aCBkPSJtLTEwLTYgMSA2bTE1LTggMSA2IiBzdHJva2Utd2lkdGg9IjUiLz48ZWxsaXBzZSBjeD0iMCIgY3k9IjExIiByeD0iMyIgcnk9IjUiIGZpbGw9IiMzMzJhNDQiLz4KPC9nPgo8IS0tIG1pbnQgcGxheWVyIGxlYW5pbmcgYmFja3dhcmQgLS0+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE0NSAxNzQpIHJvdGF0ZSgxMikiPgo8cGF0aCBkPSJtLTI2IDQ1LTcgMTUtMTAgNHEtNiA0IDAgOWwxOS0xcTctMiA5LTE4bTI3LTcgOCAxMSA4LTFxMTEgMiA2IDEwLTMgMy0xNSA0LTctMS0xNy0xNSIgZmlsbD0iIzRlYTVhMSIgc3Ryb2tlLXdpZHRoPSI0LjciLz4KPHBhdGggZD0iTS0zOCA5cS0xMCAxMy0yMCA1LTYtNC04IDEtMyAxMyAxMiAxOCAxOCA1IDI3LTEyIiBmaWxsPSIjNzZkYmM4IiBzdHJva2Utd2lkdGg9IjUiLz4KPHBhdGggZD0iTS0zNyAzOXEtMTUtMjQtOC01M2w5LTMwcTctMjQgMzEtMjggMjEtMyAzNSAxMyAxMCAxMiA2IDMybC0zIDIwUTMxIDEgNDIgMTZxMTMgMjQtMSAzNy0xNiAxNS0zOSA4LTI5LTUtMzktMjJaIiBmaWxsPSIjNzBkZGM4IiBzdHJva2Utd2lkdGg9IjUuNSIvPgo8cGF0aCBkPSJNLTQwIDEycTMgNDAgNDAgNDIgMjYgNCA0Mi0xNC0zIDIyLTI1IDIzLTQyIDEtNTYtMzJaIiBmaWxsPSIjNGJiNmE5IiBzdHJva2U9Im5vbmUiLz4KPHBhdGggZD0iTS0yNi00MXE0LTE3IDE5LTIxIiBzdHJva2U9IiNiNmZhZTciIHN0cm9rZS13aWR0aD0iOCIvPgo8cGF0aCBkPSJtLTMtMzMgOCAzbTEzLTMgOS00IiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJtMS0xOSAxIDdtMjAtMTAgMSA3IiBzdHJva2Utd2lkdGg9IjYiLz4KPHBhdGggZD0iTTctMXE2LTkgMTEtMmwxIDZxLTggMi0xMi00WiIgZmlsbD0iIzMzMmE0NCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0zNiA5cTktMSAxNC0xMyAzLTYgOC0zIDUgMiA0IDgtMyAxOC0xOCAyNSIgZmlsbD0iIzcwZGRjOCIgc3Ryb2tlLXdpZHRoPSI0LjUiLz4KPGcgc3Ryb2tlPSIjNGRhOGM4IiBmaWxsPSIjYzJlZGZmIiBzdHJva2Utd2lkdGg9IjIiPjxwYXRoIGQ9Ik0tNDItNDBxLTE4LTgtMTYtMTQgNC05IDE2IDE0Wm01LTExcS0xMS0xOC00LTIwIDctMiA0IDIwWiIvPjwvZz4KPC9nPgo8IS0tIHBpbmsgcGxheWVyIHJ1bm5pbmcgLS0+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUwMSAxNjkpIHJvdGF0ZSgtMTIpIj4KPHBhdGggZD0iTS0xNyA1MXEtNyAxMC0xNyAxMy0xMiAzLTkgMTAgMiA0IDE2IDMgMTMtMSAyNC0xOW0xOC04IDEwIDEwIDEwLTNxOC0xIDggNi0xIDctMTcgMTEtNiAxLTE2LTEwIiBmaWxsPSIjZDQ3NTllIiBzdHJva2Utd2lkdGg9IjUiLz4KPHBhdGggZD0iTTM1IDlxMTEtNiAxNS0xNyAwLTcgNy02IDEyIDMgNCAyMS03IDEzLTIwIDE4IiBmaWxsPSIjZmZhN2JmIiBzdHJva2Utd2lkdGg9IjUiLz4KPHBhdGggZD0iTS00MiAyOXEtNS0xNSA1LTMxbDEwLTIyIDQtMThxNS0yOSAzMS0zMCAyNi0yIDM0IDIyIDcgMTktMSA0My00IDE4IDAgMzQgNyAyNC0xMiAzMS0yMSA4LTQ1IDEtMTgtNi0yNi0zMFoiIGZpbGw9IiNmZmE2YmYiIHN0cm9rZS13aWR0aD0iNS41Ii8+CjxwYXRoIGQ9Ik0tNDAgMjBxNiAyNyAzMiAzMiAyNSA3IDQ3LTYtMyAxOC0yNCAxOC00MiAyLTU0LTI2WiIgc3Ryb2tlPSJub25lIiBmaWxsPSIjZTM4NGFhIi8+CjxwYXRoIGQ9Ik0tMTQtNDFxMy0xNSAxNC0xOSIgc3Ryb2tlPSIjZmZkZmViIiBzdHJva2Utd2lkdGg9IjgiLz4KPHBhdGggZD0ibS0xOS0yMCA3IDNtMTQtNCA3LTQiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Im0tMTQtOSAwIDZNNi0xMnY2IiBzdHJva2Utd2lkdGg9IjYiLz4KPHBhdGggZD0iTS0xMyA3cTcgNiAxNy0xLTEgMTQtMTAgMTMtNS0xLTctMTJaIiBmaWxsPSIjNDMyZTQwIiBzdHJva2Utd2lkdGg9IjIuOCIvPjxwYXRoIGQ9Ik0tOSAxNHE0LTMgOC0yLTQgNi04IDJaIiBmaWxsPSIjZmY4MTk4IiBzdHJva2U9Im5vbmUiLz4KPHBhdGggZD0iTS0zNCA5cS0xMSAwLTE3LTEwLTUtNy0xMC0zLTYgNiAxIDE3IDggMTIgMjMgMTYiIGZpbGw9IiNmZmE2YmYiIHN0cm9rZS13aWR0aD0iNC41Ii8+CjwvZz4KPCEtLSBib21iIGFuZCBmdXNlIC0tPgo8ZyB0cmFuc2Zvcm09InJvdGF0ZSgxMCAzMzggMTg1KSI+CjxwYXRoIGQ9Ik0zMzQgMTI1cS0xMy0yOCAxMS00MiAxNS05IDEzLTIwdC0xNi0xNXEtMTEtNC04LTEzIiBzdHJva2Utd2lkdGg9IjExIi8+CjxwYXRoIGQ9Ik0zMzQgMTI1cS0xMy0yOCAxMS00MiAxNS05IDEzLTIwdC0xNi0xNXEtMTEtNC04LTEzIiBzdHJva2U9IiNlOGJkNzgiIHN0cm9rZS13aWR0aD0iNiIvPgo8cGF0aCBkPSJtMzMxIDEwOCA1IDNtNS0yMSAzIDNtMTAtMTggNSAxbS05LTIxIDMtNG0tMTYtOCA0LTEiIHN0cm9rZS13aWR0aD0iMi41Ii8+CjxyZWN0IHg9IjMyMCIgeT0iMTA3IiB3aWR0aD0iMzQiIGhlaWdodD0iMjgiIHJ4PSI2IiBmaWxsPSIjNjI2MTdiIiBzdHJva2Utd2lkdGg9IjUiLz4KPHBhdGggZD0iTTMyNSAxMTRoMjAiIHN0cm9rZT0iIzk3OTNhZSIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxjaXJjbGUgY3g9IjMzOCIgY3k9IjE4NyIgcj0iNzAiIGZpbGw9InVybCgjbGItc2hlbGwpIiBzdHJva2Utd2lkdGg9IjYiLz4KPHBhdGggZD0iTTI4MyAxNjNxMTEtMjQgMzItMjkiIHN0cm9rZT0iIzhlOTBhMyIgc3Ryb2tlLXdpZHRoPSI4Ii8+PGNpcmNsZSBjeD0iMjgwIiBjeT0iMTc4IiByPSI0IiBmaWxsPSIjOGU5MGEzIiBzdHJva2U9Im5vbmUiLz4KPHBhdGggZD0iTTMwMiAyMzBxNTYgMzggOTEtMjQtOSA1Mi02MiA0OC0xOS0zLTI5LTEzWiIgZmlsbD0iIzIwMjAzMSIgc3Ryb2tlPSJub25lIi8+CjxwYXRoIGQ9Im0zMzEgMjcgMi0yMCA4IDE0IDE0LTgtNiAxNSAyMCAyLTE4IDggNSAxMy0xNi05LTggMTEtMS0xNC0xNiAzIDEwLTExLTEyLThaIiBmaWxsPSIjZmZjNTRmIiBzdHJva2Utd2lkdGg9IjMiLz4KPHBhdGggZD0ibTMzNiAyMiA0IDYgNi0zLTIgNyA3IDItOSAyLTMgNS0yLTYtNiAxIDQtNloiIGZpbGw9IiNmZmY4YjUiIHN0cm9rZT0ibm9uZSIvPgo8L2c+CjxnIHN0cm9rZS13aWR0aD0iMyI+PHBhdGggZD0ibTgzIDExNi0xNS01bTE4LTUtOS0xMG0zNTEgNjIgMTMtN20tMTEgMTUgMTgtMm05NS00NiAxMy0xMW0tMTEgMjAgMTYtNyIgb3BhY2l0eT0iLjciLz4KPHBhdGggZD0ibTExNiA2OCA0LTE0IDcgMi0zIDE0WiIgZmlsbD0iI2ZjOTFiNCIvPjxwYXRoIGQ9Im0yMjMgOTItMTAtNyA0LTYgMTAgNloiIGZpbGw9IiM3N2Q5YzUiLz48cGF0aCBkPSJtNDUwIDY0IDktMTMgNiA0LTkgMTJaIiBmaWxsPSIjZmZhOTVlIi8+PHBhdGggZD0ibTU3MSAxODUgMTMgNC0yIDYtMTMtNVoiIGZpbGw9IiM5YTg3ZGMiLz4KPC9nPjwvZz4KPHVzZSBocmVmPSIjbGItc3BhcmsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDc0IDE3OCkgc2NhbGUoLjgpIi8+PHVzZSBocmVmPSIjbGItc3BhcmsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQxMiA5MSkgc2NhbGUoLjkpIi8+PHVzZSBocmVmPSIjbGItc3BhcmsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ1NiAyMjkpIHNjYWxlKC43KSIvPjx1c2UgaHJlZj0iI2xiLXNwYXJrIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODkgOTMpIHNjYWxlKC42MikiLz4KPC9zdmc+Cg==" alt=""></div><div class="tiles"><button class="tile daily" id="daily"><i>R A</i><b>DAILY</b></button><a class="tile race" href="?practice=Typing%20Race"><i>🏁</i><b>TYPING RACE</b></a><a class="tile link" href="?practice=Letter%20Link"><i>B E</i><b>LETTER LINK</b></a><a class="tile event" href="?practice=Defuser"><i></i><b>DEFUSER</b></a><a class="tile bee" href="?practice=Spelling%20Bee"><i></i><b>SPELLING BEE</b></a></div><div class="actions"><button class="blue" id="create">Create Room</button><button class="practice" id="rank"><span>🎃</span><b><small>1 vs 1</small>RANKED</b></button></div><div id="rooms"></div><div class="sub"><span>Practice rooms</span><small>English</small></div><div id="practiceRooms"></div></section>
@@ -3831,17 +3832,31 @@ function countdown(r,seconds){
 }
 
 ;
-let accountName=null,googleLoader;
+let accountName=null,googleLoader,profileRevision=0;
+const profileIcons={"💣":"Bomb","⚡":"Lightning","🚀":"Rocket","👻":"Ghost","🐝":"Bee","🏁":"Finish flag"};
+const profileColors={"#5267b8":"Indigo","#b64358":"Cherry","#33766b":"Jade","#8255a2":"Violet","#946025":"Amber"};
 async function accountRequest(action="",body){
- const res=await fetch(apiOrigin+"/api/account"+action,body===undefined?{credentials:"include",cache:"no-store"}:{credentials:"include",method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
- const result=await res.json();if(!res.ok)throw Error(result.error||"Account service unavailable.");return result
+ const options={credentials:"include",cache:"no-store",signal:AbortSignal.timeout(12000)};
+ if(body!==undefined)Object.assign(options,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+ const res=await fetch(apiOrigin+"/api/account"+action,options);
+ const result=await res.json();
+ if(!res.ok)throw Error(result.error||"Account service unavailable.");
+ return result
 }
-function showAccount(name){
- accountName=name||null;nick=name||get("name","Guest");el("profile").textContent=nick
+function showAccount(state={}){
+ accountName=state.name||null;
+ const style=accountName?state:get("guest-style",{});
+ nick=accountName||get("name","Guest");
+ const icon=Object.hasOwn(profileIcons,style.icon)?style.icon:"💣";
+ const color=Object.hasOwn(profileColors,style.color)?style.color:"#5267b8";
+ const button=el("profile");
+ button.textContent=icon+" "+nick;button.style.background=color;
+ return {name:nick,icon,color}
 }
 async function restoreAccount(){
- 
- try{showAccount((await accountRequest()).name)}catch{}
+ const rev=profileRevision;
+ showAccount();
+ try{const state=await accountRequest();if(rev===profileRevision)showAccount(state)}catch{}
 }
 function loadGoogle(){
  if(!googleLoader)googleLoader=new Promise((resolve,reject)=>{
@@ -3849,27 +3864,53 @@ function loadGoogle(){
  });return googleLoader
 }
 async function profile(){
- modal("Player profile",'<label>Display name<input id="nick" maxlength="17"></label><button id="save" class="blue">Save name</button><hr><div id="accountControls"></div><p id="accountStatus" role="status">Checking account…</p>');
- const controls=el("accountControls"),status=el("accountStatus"),field=el("nick");field.value=nick;
- el("save").onclick=async()=>{try{const name=field.value.trim()||"Guest";if(accountName){showAccount((await accountRequest("/profile",{name})).name)}else{put("name",name);showAccount(null)}dialog.close()}catch(e){status.textContent=e.message}};
+ ++profileRevision;
+ modal("Player profile",`<form id="profileForm"><fieldset disabled><output id="badgePreview" aria-live="polite"></output>
+ <label>Display name<input id="nick" required maxlength="17" autocomplete="nickname"></label>
+ <div class="badgeOptions"><label>Avatar<select id="badgeIcon"></select></label><label>Badge color<select id="badgeColor"></select></label></div>
+ <button class="blue">Save profile</button></fieldset></form><hr><div id="accountControls"></div><p id="accountStatus" role="status">Loading profile…</p>`);
+ const form=el("profileForm"),group=form.querySelector("fieldset"),controls=el("accountControls"),status=el("accountStatus");
+ const field=el("nick"),icon=el("badgeIcon"),color=el("badgeColor"),preview=el("badgePreview");
+ for(const [key,value] of Object.entries(profileIcons))icon.add(new Option(key+" "+value,key));
+ for(const [key,value] of Object.entries(profileColors))color.add(new Option(value,key));
+ function paint(){preview.textContent=icon.value+"  "+(field.value.trim()||"Player");preview.style.background=color.value}
+ function fill(state){const p=showAccount(state);field.value=p.name;icon.value=p.icon;color.value=p.color;paint();group.disabled=false}
+ form.oninput=paint;
+ let state;
+ try{state=await accountRequest()}catch{
+  if(!form.isConnected)return;
+  if(accountName){status.textContent="Couldn’t load your account. Reopen your profile to retry.";return}
+  state={};status.textContent="Account service unavailable. Guest changes save on this device."
+ }
+ if(!form.isConnected)return;
+ fill(state);
+ form.onsubmit=async event=>{
+  event.preventDefault();const name=field.value.trim();if(!name){field.focus();return}
+  group.disabled=true;const data={name,icon:icon.value,color:color.value};
+  try{
+   if(accountName)showAccount(await accountRequest("/profile",data));
+   else{put("name",name);put("guest-style",{icon:data.icon,color:data.color});showAccount()}
+   if(form.isConnected){dialog.close();toast("Profile saved")}
+  }catch(e){status.textContent=e.message}finally{group.disabled=false}
+ };
+ if(state.name){
+  status.textContent="Signed in with Google · Saved to your account";
+  const out=document.createElement("button");out.textContent="Sign out";controls.append(out);
+  out.onclick=async()=>{out.disabled=true;try{await accountRequest("/logout",{});window.google?.accounts.id.disableAutoSelect();showAccount();await profile()}catch(e){status.textContent=e.message;out.disabled=false}};return
+ }
+ if(!state.clientId)return;
  try{
-
-  const state=await accountRequest();if(!controls.isConnected)return;showAccount(state.name);if(state.name&&field!==document.activeElement)field.value=state.name;
-  if(state.name){
-   status.textContent="Signed in with Google";const out=document.createElement("button");out.textContent="Sign out";controls.append(out);
-   out.onclick=async()=>{try{await accountRequest("/logout",{});showAccount(null);window.google?.accounts.id.disableAutoSelect();dialog.close()}catch(e){status.textContent=e.message}};return
-  }
-  if(!state.clientId){status.textContent="Guest profile · Google sign-in is awaiting setup.";return}
   const [challenge]=await Promise.all([accountRequest("/challenge",{}),loadGoogle()]);if(!controls.isConnected)return;
-  status.textContent="Your first sign-in creates your Letter Bomb account.";
-  google.accounts.id.initialize({client_id:challenge.clientId,nonce:challenge.nonce,callback:async result=>{try{
-   const user=await accountRequest("/google",{credential:result.credential});showAccount(user.name);dialog.close();toast("Signed in as "+user.name)
-  }catch(e){status.textContent=e.message}}});
+  status.textContent="Sign in to save your profile across devices.";
+  google.accounts.id.initialize({client_id:challenge.clientId,nonce:challenge.nonce,callback:async result=>{
+   try{await accountRequest("/google",{credential:result.credential});const confirmed=await accountRequest();
+    if(!confirmed.name)throw Error("Your browser blocked the sign-in cookie. Allow cookies for Letter Bomb and try again.");
+    showAccount(confirmed);if(form.isConnected&&dialog.open)await profile();toast("Signed in as "+confirmed.name)
+   }catch(e){status.textContent=e.message}
+  }});
   google.accounts.id.renderButton(controls,{type:"standard",text:"continue_with",theme:"outline",size:"large"})
  }catch(e){status.textContent=e.message}
 }
-
-;
 function updateAddress(path){if(location.protocol!=="file:")history.replaceState(null,"",path)}
 const el=id=>document.getElementById(id);
 const modes=modeNames;
