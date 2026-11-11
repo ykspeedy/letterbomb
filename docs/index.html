@@ -37,25 +37,11 @@ async function gameRequest(path,options){
  try{return await fetch(apiOrigin+"/api"+path,options)}
  catch(error){
   if(error instanceof TypeError || ["AbortError","TimeoutError"].includes(error.name))
-   throw new GameConnectionError("Could not connect to the game server.");
+   throw new GameConnectionError("Letter Bomb couldn’t reach the multiplayer server. Check your connection and try again.");
   throw error
  }
 }
-function gameAddress(code){
- const dest=new URL("/",apiOrigin);
- if(code)dest.searchParams.set("room",code);
- return dest.href
-}
-function recoverOnline(error,code){
- if(error instanceof GameConnectionError && navigator.onLine!==false && location.origin!==apiOrigin){
-  location.assign(gameAddress(code));
-  return true
- }
- return false
-}
-function reportOnline(error,code){
- if(!recoverOnline(error,code))toast(error.message)
-}
+
 
 
 ;
@@ -3920,7 +3906,7 @@ async function profile(){
    if(accountName)showAccount(await accountRequest("/profile",data));
    else{put("name",name);put("guest-style",{icon:data.icon,color:data.color});showAccount()}
    if(form.isConnected){dialog.close();toast("Profile saved")}
-  }catch(e){if(slot.isConnected && dialog.open && !recoverOnline(e))status.textContent=e.message}finally{group.disabled=false}
+  }catch(e){if(status.isConnected)status.textContent=e.message}finally{group.disabled=false}
  };
 }
 function closeAccountMenu(){
@@ -3963,11 +3949,11 @@ async function openLogin(){
    try{await accountRequest("/google",{credential:r.credential});const state=await accountRequest();
     if(!state.name)throw new GameConnectionError("Allow cookies for Letter Bomb and try again.");
     ++profileRevision;showAccount(state);if(slot.isConnected)dialog.close();toast("Signed in as "+state.name)
-   }catch(e){if(slot.isConnected && dialog.open && !recoverOnline(e))status.textContent=e.message}
+   }catch(e){if(status.isConnected)status.textContent=e.message}
   }});
   google.accounts.id.renderButton(slot,{type:"standard",text:"signin_with",theme:"filled_black",shape:"pill",size:"large",width:Math.min(310,slot.clientWidth),logo_alignment:"left"});
   status.textContent=""
- }catch(e){if(slot.isConnected && dialog.open && !recoverOnline(e))status.textContent=e.message}
+ }catch(e){if(status.isConnected)status.textContent=e.message}
 }
 function updateAddress(path){if(location.protocol!=="file:")history.replaceState(null,"",path)}
 const el=id=>document.getElementById(id);
@@ -4001,13 +3987,10 @@ async function refresh(){
  }catch(error){
   lastList="";
   const list=el("rooms");
-  list.textContent="Room list unavailable. ";
-  if(error instanceof GameConnectionError && location.origin!==apiOrigin){
-   const link=document.createElement("a");link.href=gameAddress();link.textContent="Open the multiplayer server";link.style.textDecoration="underline";list.append(link)
-  }
+  list.textContent="Room list unavailable. You can still play practice modes.";
  }
 }
-async function enterByCode(id,join){try{const r=await api("/rooms/"+id,join?{action:"join",name:nick}:undefined);dialog.close();enter(r)}catch(e){reportOnline(e,id)}}
+async function enterByCode(id,join){try{const r=await api("/rooms/"+id,join?{action:"join",name:nick}:undefined);dialog.close();enter(r)}catch(e){toast(e.message)}}
 installAccountMenu();
 function create(){
  modal("Create room",'<div class="tabs"><button id="newTab">Create</button><button id="joinTab">Join</button></div><div id="createContent"></div><div class="createFoot"><button id="cancel">Cancel</button><button class="blue" id="make">Create</button></div>');
@@ -4023,10 +4006,10 @@ function create(){
   el("public").onclick=()=>{visible=true;privacy()};el("private").onclick=()=>{visible=false;privacy()};privacy()
  }
  el("newTab").onclick=()=>{joining=false;draw()};el("joinTab").onclick=()=>{joining=true;draw()};el("cancel").onclick=()=>dialog.close();
- el("make").onclick=async()=>{const btn=el("make");btn.disabled=true;try{if(joining){await enterByCode(el("code").value.trim().toUpperCase(),true);return}const r=await api("/rooms",{name:nick,mode,public:visible,rounds:el("roundCount")?.value,hearts:el("hearts").value,difficulty:el("variant")?.value,tests:[...el("skillSet").querySelectorAll(":checked")].map(n=>n.value),wordLength:el("variant")?.value,minutes:el("variant")?.value,seconds:el("variant")?.value,mapType:el("variant")?.value});dialog.close();enter(r)}catch(e){reportOnline(e)}finally{btn.disabled=false}};draw()
+ el("make").onclick=async()=>{const btn=el("make");btn.disabled=true;try{if(joining){await enterByCode(el("code").value.trim().toUpperCase(),true);return}const r=await api("/rooms",{name:nick,mode,public:visible,rounds:el("roundCount")?.value,hearts:el("hearts").value,difficulty:el("variant")?.value,tests:[...el("skillSet").querySelectorAll(":checked")].map(n=>n.value),wordLength:el("variant")?.value,minutes:el("variant")?.value,seconds:el("variant")?.value,mapType:el("variant")?.value});dialog.close();enter(r)}catch(e){toast(e.message)}finally{btn.disabled=false}};draw()
 }
 el("create").onclick=create;
-async function openRoom(id){try{enter(await api("/rooms/"+id))}catch(e){reportOnline(e,id)}}
+async function openRoom(id){try{enter(await api("/rooms/"+id))}catch(e){toast(e.message)}}
 function enter(r){lastState="";epoch++;room=r;updateAddress(r.local?"?practice="+encodeURIComponent(r.mode):"?room="+r.id);el("room").hidden=false;el("lobby").hidden=true;render()}
 function render(){
  const r=room,me=r.players.find(p=>p.you),p=r.players[r.active],started=r.phase==="Started";
@@ -4124,7 +4107,7 @@ const requestedPractice=new URLSearchParams(location.search).get("practice");if(
 function ranked(){
  modal("Ranked duel",'<p>Face another player in Original. Two hearts each. The last player standing wins.</p><p>Your duels on this device: <b id="rankRecord"></b></p><button class="blue" id="queue">Find opponent</button>');
  const record=get("duels",{}),values=Object.values(record);el("rankRecord").textContent=values.filter(Boolean).length+" wins · "+values.filter(v=>!v).length+" losses";
- el("queue").onclick=async()=>{const btn=el("queue");btn.disabled=true;try{const r=await api("/ranked",{name:nick});dialog.close();enter(r)}catch(e){reportOnline(e)}finally{btn.disabled=false}}
+ el("queue").onclick=async()=>{const btn=el("queue");btn.disabled=true;try{const r=await api("/ranked",{name:nick});dialog.close();enter(r)}catch(e){toast(e.message)}finally{btn.disabled=false}}
 }
 el("rank").onclick=ranked;
 
